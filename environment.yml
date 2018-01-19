@@ -22,4 +22,5 @@ dependencies:
 - zlib=1.2.11=ha838bed_2
 - pip:
   - numpy==1.14.0
+  - py-kaldi-asr==0.2.4
 
