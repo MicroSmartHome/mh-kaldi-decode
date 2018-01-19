@@ -4,6 +4,7 @@ channels:
 dependencies:
 - ca-certificates=2017.08.26=h1d4fec5_0
 - certifi=2017.11.5=py36hf29ccca_0
+- cython=0.27.3=py36h1860423_0
 - libedit=3.1=heed3624_0
 - libffi=3.2.1=hd88cf55_4
 - libgcc-ng=7.2.0=h7cc24e2_2
