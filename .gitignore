@@ -105,3 +105,11 @@ venv.bak/
 # mypy
 .mypy_cache/
 
+.vagrant/
+
+vagrant-sync-folder/aws_credentials.txt
+
+flymd.html
+flymd.md
+
+.idea/workspace.xml
