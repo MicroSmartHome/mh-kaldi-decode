@@ -6,8 +6,15 @@
 
 set -e -o pipefail -u
 
-# Must be the same as in bootstrap-seed.sh.
-KALDI_EXPERIMENTS_ROOT=${HOME}/projects
+BOOTSTRAP_00_LIB_SH=/vagrant/bootstrap-00-lib.sh
+if [ -f ${BOOTSTRAP_00_LIB_SH} ]; then
+    . ${BOOTSTRAP_00_LIB_SH}
+else
+    echo "Error: Could not find ${BOOTSTRAP_00_LIB_SH}."
+    exit 1
+fi
+
+
 KALDI_GIT_URL=https://github.com/kaldi-asr/kaldi.git
 KALDI_GIT_HASH=e9abbff99a2167eb2c00e5c12495fa3f005f3db9
 KALDI_GIT_BRANCH_NAME=kaldi-experiments
@@ -67,18 +74,6 @@ clone_kaldi() { # kaldi_experiments_root, git_url, git_hash, git_branch_name
         popd
     else
         echo "Directory ${kaldi_experiments_root}/kaldi exists. Not cloning Kaldi."
-    fi
-}
-
-set_up_conda_env() { # conda_env_name, conda_env_yml
-    local conda_env_name=$1; shift
-    local conda_env_yml=$1
-
-    if conda env list | grep "^${conda_env_name} " -q; then
-        echo "Conda environment '${conda_env_name}' already exists."
-    else
-        echo "Creating Conda environment '${conda_env_name}' with ${conda_env_yml}."
-        conda env create -f ${conda_env_yml}
     fi
 }
 

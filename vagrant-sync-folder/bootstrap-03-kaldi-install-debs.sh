@@ -6,6 +6,7 @@ autoconf \
 build-essential \
 libatlas3-base \
 libtool \
+swig \
 zlib1g-dev \
 "
 

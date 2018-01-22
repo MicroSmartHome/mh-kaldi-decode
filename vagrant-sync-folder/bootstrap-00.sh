@@ -2,7 +2,14 @@
 
 set -e -o pipefail -u
 
-USER_=vagrant
+BOOTSTRAP_00_LIB_SH=/vagrant/bootstrap-00-lib.sh
+if [ -f ${BOOTSTRAP_00_LIB_SH} ]; then
+    . ${BOOTSTRAP_00_LIB_SH}
+else
+    >&2 echo "Error: Could not find ${BOOTSTRAP_00_LIB_SH}."
+    exit 1
+fi
+
 DECODER_SCRIPTS_DIR=
 
 AWS_CREDENTIALS_FILE=/vagrant/aws_credentials.txt
@@ -16,7 +23,8 @@ KALDI_GIT_BRANCH_NAME=kaldi-experiments
 
 main() {
 
-    install_kaldi_debs
+    if false; then
+    install_general_debs
 
     su ${USER_} -c /vagrant/bootstrap-01-install-miniconda.sh
 
@@ -29,6 +37,11 @@ main() {
     /vagrant/bootstrap-03-kaldi-install-debs.sh
 
     su ${USER_} -c /vagrant/bootstrap-04-kaldi-clone-and-compile.sh
+    fi
+
+    /vagrant/bootstrap-05-mh-kaldi-decode-install-debs.sh
+
+    su ${USER_} -c /vagrant/bootstrap-06-mh-kaldi-decode-clone-and-install.sh
 }
 
 write_aws_config() { # aws_credentials_txt, aws_region
@@ -70,9 +83,9 @@ write_aws_config() { # aws_credentials_txt, aws_region
 
 export -f write_aws_config
 
-install_kaldi_debs() {
+install_general_debs() {
     apt-get update
-    apt-get install -y flac htop subversion swig
+    apt-get install -y flac htop subversion pkg-config
 }
 
 main
