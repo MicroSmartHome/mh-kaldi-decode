@@ -79,26 +79,6 @@ To deactivate it, type
 This is the same Conda environment that is used on the guest machine.
 
 
-## Credentials for AWS User with Read Access to all AWS S3 buckets
-
-Kaldi needs SRILM to compile, but it can only be downloaded after
-filling out a form on a web site. To be able to fully automatically
-build Kaldi, SRILM must be present on an AWS S3 bucket (see
-`SRILM_REMOTE_LOCATION` in `vagrant-sync-folder/bootstrap-02-kaldi.sh`
-for the name of the bucket). To allow the scripts to download files
-from all AWS S3 buckets, perform the following steps:
-
-1. Create a user on AWS with read-only access to all S3 buckets.
-
-2. Create a file `vagrant-sync-folder/aws_credentials.txt` with the content:
-
-   ```
-   access_key_id=<AWS_ACCESS_KEY>
-   secret_access_key=<AWS_SECRET_ACCESS_KEY>
-   user=<AWS_USER_NAME>
-
-   ```
-
 ## Known Issues
 
 The VM in `Vagrantfile` is configured to have 2 CPUs and 2GB of
