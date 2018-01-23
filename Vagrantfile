@@ -10,6 +10,15 @@ Vagrant.configure("2") do |config|
   # For a complete reference, please see the online documentation at
   # https://docs.vagrantup.com.
 
+  config.persistent_storage.enabled = true
+  config.persistent_storage.location = "workstorage.vdi"
+  config.persistent_storage.size = 15000
+  config.persistent_storage.mountname = 'workstorage'
+  config.persistent_storage.filesystem = 'ext4'
+  config.persistent_storage.mountpoint = '/workstorage'
+  config.persistent_storage.volgroupname = 'workstorage'
+  config.persistent_storage.diskdevice = '/dev/sdc'
+
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
   config.vm.box = "ubuntu/xenial64"
@@ -25,7 +34,7 @@ Vagrant.configure("2") do |config|
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
   # NOTE: This will enable public access to the opened port
-  config.vm.network "forwarded_port", guest: 80, host: 6789
+  #config.vm.network "forwarded_port", guest: 80, host: 6789
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine and only allow access
@@ -58,6 +67,9 @@ Vagrant.configure("2") do |config|
 
     # Customize the amount of memory on the VM:
     vb.memory = '2048'
+
+    # Customize the number of CPUs on the VM:
+    vb.cpus = 2
   end
   #
   # View the documentation for the provider you are using for more

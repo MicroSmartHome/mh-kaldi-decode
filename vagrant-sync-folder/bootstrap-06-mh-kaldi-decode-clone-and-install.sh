@@ -35,6 +35,7 @@ clone_git_repo() { # mh_kaldi_decode_git_url, mh_kaldi_decode_root
         echo "Directory ${mh_kaldi_decode_root} already exists. Not cloning repo."
     else
         local projects_root=$(dirname ${mh_kaldi_decode_root})
+        mkdir -p ${projects_root}
         echo "Cloning ${mh_kaldi_decode_git_url} into $(dirname ${projects_root})"
         pushd ${projects_root}
         git clone ${mh_kaldi_decode_git_url}

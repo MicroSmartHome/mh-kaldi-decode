@@ -112,4 +112,8 @@ vagrant-sync-folder/aws_credentials.txt
 flymd.html
 flymd.md
 
-.idea/workspace.xml
+workstorage.vdi
+
+vagrant-sync-python-src/.idea/workspace.xml
+vagrant-sync-python-src/audio/
+vagrant-sync-python-src/kaldi-models/

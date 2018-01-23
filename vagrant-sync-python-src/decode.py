@@ -1,25 +1,42 @@
 #!/usr/bin/env python
 
+import glob
+from os.path import join
+
 from kaldiasr.nnet3 import KaldiNNet3OnlineModel, KaldiNNet3OnlineDecoder
+import plac
 
-MODELDIR    = '/home/mpuels/mh-kaldi-models/kaldi-chain-voxforge-de-r20180119'
-MODEL       = 'nnet_tdnn_sp'
-WAVFILE     = '/home/mpuels/projects/py-kaldi-asr/data/single.wav'
 
-model   = KaldiNNet3OnlineModel   (MODELDIR, MODEL)
-decoder = KaldiNNet3OnlineDecoder (model)
+@plac.annotations(
+    model_dir="Path to directory containing a Kaldi model.",
+    model_name="Name of the Kaldi model to use. Must be the name of a "
+               "subdirectory in 'model_dir'.",
+    wav_dir="Path to directory containing wav files to transcribe.")
+def main(model_dir, model_name, wav_dir):
+    print("Loading model.")
+    model = KaldiNNet3OnlineModel(model_dir, model_name)
+    print("Loading decoder.")
+    decoder = KaldiNNet3OnlineDecoder(model)
 
-if decoder.decode_wav_file(WAVFILE):
+    wavs = glob.glob(join(wav_dir, "*.wav"))
 
-    print('%s decoding worked!' % model)
+    for wav in wavs:
+        print("Started decoding " + wav)
+        if decoder.decode_wav_file(wav):
 
-    s, l = decoder.get_decoded_string()
-    print()
-    print("*****************************************************************")
-    print("**", s)
-    print("** %s likelihood:" % model, l)
-    print("*****************************************************************")
-    print()
+            print('%s decoding worked!' % model)
 
-else:
-    print('%s decoding did not work :(' % model)
+            s, l = decoder.get_decoded_string()
+            print()
+            print("*****************************************************************")
+            print("**", s)
+            print("** %s likelihood:" % model, l)
+            print("*****************************************************************")
+            print()
+
+        else:
+            print('%s decoding did not work :(' % model)
+
+
+if __name__ == "__main__":
+    plac.call(main)

@@ -1,5 +1,9 @@
 USER_=vagrant
-KALDI_EXPERIMENTS_ROOT=/home/${USER_}/projects
+
+# Must be the same as `config.persistent_storage.mountpoint` in ../Vagrantfile.
+WORKSTORAGE_ROOT=/workstorage
+
+KALDI_EXPERIMENTS_ROOT=${WORKSTORAGE_ROOT}
 
 set_up_conda_env() { # conda_env_name, conda_env_yml
     local conda_env_name=$1; shift

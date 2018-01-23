@@ -23,7 +23,8 @@ KALDI_GIT_BRANCH_NAME=kaldi-experiments
 
 main() {
 
-    if false; then
+    chown ${USER_}.${USER_} ${WORKSTORAGE_ROOT}
+
     install_general_debs
 
     su ${USER_} -c /vagrant/bootstrap-01-install-miniconda.sh
@@ -37,7 +38,6 @@ main() {
     /vagrant/bootstrap-03-kaldi-install-debs.sh
 
     su ${USER_} -c /vagrant/bootstrap-04-kaldi-clone-and-compile.sh
-    fi
 
     /vagrant/bootstrap-05-mh-kaldi-decode-install-debs.sh
 
