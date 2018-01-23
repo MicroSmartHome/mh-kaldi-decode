@@ -82,7 +82,7 @@ This is the same Conda environment that is used on the guest machine.
 ## Known Issues
 
 The VM in `Vagrantfile` is configured to have 2 CPUs and 2GB of
-RAM. But the amount of RAM is not enough to compile Kaldi with `make-j2`.
+RAM. But the amount of RAM is not enough to compile Kaldi with `make -j2`.
 That's why in
 [bootstrap-04-kaldi-clone-and-compile.sh](https://github.com/mpuels/mh-kaldi-decode/blob/master/vagrant-sync-folder/bootstrap-04-kaldi-clone-and-compile.sh)
 `MAKE_J_OPTION` is set to 1. If your host machine has enough computing
