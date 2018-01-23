@@ -3,8 +3,8 @@ channels:
 - defaults
 dependencies:
 - ca-certificates=2017.08.26=h1d4fec5_0
-- certifi=2017.11.5=py36hf29ccca_0
-- cython=0.27.3=py36h1860423_0
+- certifi=2017.11.5=py27h71e7faf_0
+- cython=0.27.3=py27hc56b35e_0
 - intel-openmp=2018.0.0=hc7b2577_8
 - libedit=3.1=heed3624_0
 - libffi=3.2.1=hd88cf55_4
@@ -13,17 +13,15 @@ dependencies:
 - libstdcxx-ng=7.2.0=h7a57d05_2
 - mkl=2018.0.1=h19d6760_4
 - ncurses=6.0=h9df7e31_2
-- numpy=1.14.0=py36h3dfced4_0
+- numpy=1.14.0=py27h3dfced4_0
 - openssl=1.0.2n=hb7f436b_0
-- pip=9.0.1=py36h6c6f9ce_4
-- python=3.6.4=hc3d631a_1
+- pip=9.0.1=py27ha730c48_4
+- python=2.7.14=h1571d57_29
 - readline=7.0=ha6073c6_4
-- setuptools=38.4.0=py36_0
+- setuptools=38.4.0=py27_0
 - sqlite=3.20.1=hb898158_2
 - tk=8.6.7=hc745277_3
-- wheel=0.30.0=py36hfd4bba0_1
-- xz=5.2.3=h55aa19d_2
+- wheel=0.30.0=py27h2bc6bb2_1
 - zlib=1.2.11=ha838bed_2
 - pip:
   - py-kaldi-asr==0.2.4
-
