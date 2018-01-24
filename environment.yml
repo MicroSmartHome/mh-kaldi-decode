@@ -16,6 +16,7 @@ dependencies:
 - numpy=1.14.0=py27h3dfced4_0
 - openssl=1.0.2n=hb7f436b_0
 - pip=9.0.1=py27ha730c48_4
+- plac=0.9.6=py27_0
 - python=2.7.14=h1571d57_29
 - readline=7.0=ha6073c6_4
 - setuptools=38.4.0=py27_0
@@ -25,3 +26,4 @@ dependencies:
 - zlib=1.2.11=ha838bed_2
 - pip:
   - py-kaldi-asr==0.2.4
+
