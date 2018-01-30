@@ -12,6 +12,7 @@ class KaldiNNet3OnlineDecoderMock:
     def __init__(self):
         self.n_calls_decode_wav_file = -1
 
+    # noinspection PyUnusedLocal
     def decode_wav_file(self, wav_path):
         # type: (str) -> bool
         self.n_calls_decode_wav_file += 1
