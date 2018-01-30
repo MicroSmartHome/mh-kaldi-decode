@@ -1,3 +1,4 @@
+# coding=utf-8
 import json
 import logging
 
@@ -22,7 +23,7 @@ class KaldiNNet3OnlineDecoderMock:
     @staticmethod
     def get_decoded_string():
         # type: () -> Tuple[str,float]
-        return "Lorem ipsum dolor sit amet, consectetur adipiscing elit", -0.4
+        return "Lörem ipsüm dolor sit ämet, cönsectetür ädipiscing elit", -0.4
 
 
 # noinspection PyUnresolvedReferences
@@ -48,7 +49,8 @@ def decode_wavs(decoder,  # type: KaldiNNet3OnlineDecoder
             with open(str(out_file_path), "wt") as f:
                 json.dump({"likelihood": likelihood,
                            "transcription": transcription},
-                          f)
+                          f,
+                          ensure_ascii=False)
         else:
             logger.info(dict(message="decoding failed",
                              wav_file=str(wav),
