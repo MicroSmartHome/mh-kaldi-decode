@@ -3,6 +3,8 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/audio" />
+      <excludeFolder url="file://$MODULE_DIR$/audio_testing" />
+      <excludeFolder url="file://$MODULE_DIR$/decoded" />
       <excludeFolder url="file://$MODULE_DIR$/kaldi-models" />
     </content>
     <orderEntry type="inheritedJdk" />
