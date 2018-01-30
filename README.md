@@ -41,7 +41,8 @@ perform the following steps
     host$ vagrant ssh
     guest$ source activate mh-kaldi-decode
     guest$ cd /vagrant-python-src
-    guest$ ./decode.py kaldi-models/KALDI_MODEL tdnn_sp audio #  Example call.
+    guest$ mkdir decoded
+    guest$ ./decode.py kaldi-models/KALDI_MODEL tdnn_sp audio decoded #  Example call.
     guest$ sudo shutdown -h
 
 Performing the second step (`vagrant up`) for the first time will take
@@ -51,7 +52,10 @@ be much faster.
 The execution of `decode.py` above is a rough example. A concrete call
 might look like this:
 
-    ./decode.py kaldi-models/kaldi-chain-voxforge-de-r20180119 tdnn_sp audio
+    ./decode.py kaldi-models/kaldi-chain-voxforge-de-r20180119 tdnn_sp audio decoded
+
+For each wav file in `audio/` the script will write a corresponding
+json file containing the transcription into the directory `decoded/`.
 
 The directory `vagrant-sync-python-src/` on the host machine is mapped
 to `/vagrant-python-src` on the guest machine. So each change made on
