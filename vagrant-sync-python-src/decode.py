@@ -47,7 +47,7 @@ def main(model_dir, model_name, in_wav_dir, out_dir, dry_run):
     logger.info(dict(message="scanning directory for wav files",
                      in_wav_dir=str(in_wav_dir)))
 
-    in_wavs = list(in_wav_dir.glob("*.wav"))
+    in_wavs = sorted(list(in_wav_dir.glob("*.wav")))
 
     logger.info(dict(message="scanned directory for wav files",
                      in_wav_dir=str(in_wav_dir),
