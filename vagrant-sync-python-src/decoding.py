@@ -46,7 +46,7 @@ def decode_wavs(decoder,  # type: KaldiNNet3OnlineDecoder
                              decoding_started_at=decoding_started_at,
                              wav_duration_s=wav_duration_s,
                              wav_nr=wav_nr + 1))
-            out_file_path = out_dir / Path(wav.stem + ".json")
+            out_file_path = out_dir / Path(wav.stem + ".jsonl")
             with open(str(out_file_path), "wt") as f:
                 json.dump({"likelihood": likelihood,
                            "transcription": transcription},
